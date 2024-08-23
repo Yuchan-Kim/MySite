@@ -21,6 +21,10 @@ public class User {
 		this.userName = userName;
 		this.userGender = userGender;
 	}
+	public User(String userId, String userPw) {
+		this.userId = userId;
+		this.userPw = userPw;
+	}
 
 	public int getUserNum() {
 		return userNum;

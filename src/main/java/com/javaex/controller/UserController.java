@@ -58,13 +58,15 @@ public class UserController {
 	}
 	
 	@RequestMapping(value ="/user/login", method = {RequestMethod.GET, RequestMethod.POST} )
-	public String login(@ModelAttribute User user, HttpSession session) {
+	public String login(@RequestParam(value = "loginId") String id, 
+			   @RequestParam(value = "loginPW") String pw, HttpSession session) {
 		System.out.println("MySiteUserController.login()");
+		User user = new User(id,pw);
 		User authUser = service.exeLogin(user);
 		
-		session.setAttribute("",authUser);
+		session.setAttribute("authUser",authUser);
 		
-		return "";
+		return "redirect:/index";
 	}
 	
 	
