@@ -13,40 +13,7 @@
 <body>
 	<div id="wrap">
 
-		<div id="header" class="clearfix">
-			<h1>
-				<a href="">MySite</a>
-			</h1>
-
-			<!-- 로그인 했을때 -->
-			<c:if test = "${sessionScope.authUser != null}">
-				<ul>
-					<li> ${authUser.userName} 님 안녕하세요^^</li>
-					<li><a href="/mysite/user/logout" class="btn_s">로그아웃</a></li>
-					<li><a href="" class="btn_s">회원정보수정</a></li>
-				</ul>
-			</c:if>
-			
-			<c:if test = "${sessionScope.authUser == null}">
-			<ul>
-				<li><a href="/mysite/loginform" class="btn_s">로그인</a></li>
-				<li><a href="/mysite/joinprocess" class="btn_s">회원가입</a></li>
-			</ul>
-			</c:if>
-			
-		</div>
-		<!-- //header -->
-
-		<div id="nav">
-			<ul class="clearfix">
-				<li><a href="">입사지원서</a></li>
-				<li><a href="">게시판</a></li>
-				<li><a href="">갤러리</a></li>
-				<li><a href="">방명록</a></li>
-			</ul>
-		</div>
-		<!-- //nav -->
-
+		<c:import url = "/WEB-INF/views/include/header.jsp"></c:import>
 		
 		<div id="container" class="clearfix">
 			<!-- aside 없음 -->
@@ -91,10 +58,7 @@
 		<!-- //container -->
 		
 		
-		<div id="footer">
-			Copyright ⓒ 2020 황일영. All right reserved
-		</div>
-		<!-- //footer -->
+		<c:import url = "/WEB-INF/views/include/footer.jsp"></c:import>
 
 	</div>
 	<!-- //wrap -->
