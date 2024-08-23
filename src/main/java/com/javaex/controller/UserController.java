@@ -69,6 +69,14 @@ public class UserController {
 		return "redirect:/index";
 	}
 	
+	@RequestMapping(value ="/user/logout", method = {RequestMethod.GET, RequestMethod.POST} )
+	public String logout(HttpSession session) {
+		System.out.println("MySiteUserController.login()");
+		session.removeAttribute("authUser");
+		
+		return "redirect:/index";
+	}
+	
 	
 
 }
