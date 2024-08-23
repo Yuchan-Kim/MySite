@@ -24,5 +24,17 @@ public class UserController {
 
 		return "user/joinForm";
 	}
+	
+	@RequestMapping(value ="/registration", method = {RequestMethod.GET, RequestMethod.POST} )
+	public String registration() {
+		
+		System.out.println("MySiteUserController.Registration()");
+		
+		
+		
+		return "user/joinSuccess";
+	}
+	
+	
 
 }

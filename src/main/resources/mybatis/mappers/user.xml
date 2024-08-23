@@ -3,5 +3,7 @@
 
 
 <mapper namespace="mysite">
-<!-- 쿼리문작성 -->
+	<insert id="insert" parameterType = "com.javaex.vo.User">
+		<![CDATA[ insert from web values(null, #{web_id}, #{web_name}, #{web_pw}, #{web_gender} ) ]]>]
+	</insert>
 </mapper>
