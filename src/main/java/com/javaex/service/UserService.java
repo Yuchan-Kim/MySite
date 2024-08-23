@@ -17,5 +17,12 @@ public class UserService {
 		int count = dao.registeration(user);
 		return count;
 	}
+	
+	//Login
+	public User exeLogin(User user) {
+		System.out.println("UserService.exeLogin()");
+		User userVo = dao.selectUser(user);
+		return userVo;
+	}
 
 }

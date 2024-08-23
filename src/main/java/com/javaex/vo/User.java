@@ -14,6 +14,13 @@ public class User {
 		this.userName = userName;
 		this.userGender = userGender;
 	}
+	
+	public User(String userId, String userPw, String userName, String userGender) {
+		this.userId = userId;
+		this.userPw = userPw;
+		this.userName = userName;
+		this.userGender = userGender;
+	}
 
 	public int getUserNum() {
 		return userNum;

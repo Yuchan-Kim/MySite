@@ -16,4 +16,10 @@ public class UserDao {
 		int count = sqlsession.insert("mysite.insert", user);
 		return count;
 	}
+	
+	public User selectUser(User user) {
+		User userVo = sqlsession.selectOne("selectOne",user);
+		
+		return userVo;
+	}
 }

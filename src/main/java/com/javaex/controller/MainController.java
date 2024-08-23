@@ -11,7 +11,7 @@ public class MainController {
 	@RequestMapping(value ="/index", method = {RequestMethod.GET, RequestMethod.POST} )
 	public String index() {
 
-		System.out.println("MainController.index()");
+		System.out.println("MySiteMainController.index()");
 
 		return "/main/index";
 	}
