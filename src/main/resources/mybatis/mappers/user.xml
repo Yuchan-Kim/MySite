@@ -9,8 +9,8 @@
         ]]>
     </insert>
     
-    <select id="selectOne" parameterType="com.javaex.vo.User" resultType="com.javaex.vo.User">
-		<![CDATA[ select web_id, web_name, web_pw, web_gender from web where web_id = #{userId} and web_pw = #{userPw} ]]>
+    <select id="selectOne" parameterType="map" resultType="com.javaex.vo.User">
+		<![CDATA[ select web_no,web_id, web_name, web_pw, web_gender from web where web_id = #{id} and web_pw = #{pw} ]]>
 	</select>
 	
 	<update id="updateUser" parameterType="map">

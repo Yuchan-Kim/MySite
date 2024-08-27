@@ -19,9 +19,9 @@ public class UserService {
 	}
 	
 	//Login
-	public User exeLogin(User user) {
+	public User exeLogin(String id, String pw) {
 		System.out.println("UserService.exeLogin()");
-		User userVo = dao.selectUser(user);
+		User userVo = dao.selectUser(id,pw);
 		return userVo;
 	}
 	

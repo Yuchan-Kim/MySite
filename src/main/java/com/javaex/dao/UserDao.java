@@ -21,10 +21,14 @@ public class UserDao {
 		return count;
 	}
 
-	public User selectUser(User user) {
-		User userVo = sqlsession.selectOne("mysite.selectOne",user);
+	public User selectUser(String id, String pw) {
+		Map<String, Object> params = new HashMap<>();
+		params.put("id", id);
+		params.put("pw", pw);
+		User user = (User)sqlsession.selectOne("mysite.selectOne",params);
+		
 
-		return userVo;
+		return user;
 	}
 
 	public User updateUser(int userNum,
@@ -32,7 +36,6 @@ public class UserDao {
 			 String name,
 			 String pw,
 			 String gender) {
-		System.out.println("UserDao.updateUser()");
 		Map<String, Object> params = new HashMap<>();
 		params.put("userNum", userNum);
 		params.put("id", id);

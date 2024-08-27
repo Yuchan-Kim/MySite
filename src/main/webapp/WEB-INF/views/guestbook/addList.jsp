@@ -83,7 +83,7 @@
 						<tr>
 							<td>아이디: ${guestVo.personId}</td>
 							<td>이름: ${guestVo.name} </td>
-							<td>날짜: 2022-01-01</td>
+							<td>날짜: ${guestVo.time }</td>
 							<td><a href="/mysite/guestbook/deleteformat?num=${guestVo.personId}">[삭제]</a></td>
 						</tr>
 						<tr>

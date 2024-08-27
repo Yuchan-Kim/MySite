@@ -48,16 +48,26 @@
 
 							<!-- 아이디 -->
 
-							<div class="form-group">
-								<label class="form-text" for="input-uid">아이디</label> <input type="text" id="input-uid" name="id" value="" placeholder="아이디를 입력하세요">
-								<button type="submit" formaction="/mysite/user/checkDuplicate" formmethod="post">중복체크</button>
-							</div>
 
-							<c:if test="${not empty duplicateMessage}">
-								<div class="form-group">
-									<span style="color: red;">${duplicateMessage}</span>
-								</div>
-							</c:if>
+
+							<c:choose>
+								<c:when test="${not empty duplicateMessage}">
+									<div class="form-group">
+										<span style="color: red;">${duplicateMessage}</span>
+									</div>
+									<div class="form-group">
+										<label class="form-text" for="input-uid">아이디</label> <input type="text" id="input-uid" name="id" value="${param.id}" placeholder="아이디를 입력하세요">
+										<button type="submit" formaction="/mysite/user/checkDuplicate" formmethod="post">중복체크</button>
+									</div>
+								</c:when>
+								<c:otherwise>
+									<div class="form-group">
+										<label class="form-text" for="input-uid">아이디</label> <input type="text" id="input-uid" name="id" value="" placeholder="아이디를 입력하세요">
+										<button type="submit" formaction="/mysite/user/checkDuplicate" formmethod="post">중복체크</button>
+									</div>
+									<!-- 여기에 다른 경우를 처리할 수 있습니다 (예: 기본 상태, 에러 메시지 없음 등) -->
+								</c:otherwise>
+							</c:choose>
 
 
 							<!-- 비밀번호 -->
@@ -72,19 +82,15 @@
 
 							<!-- //나이 -->
 							<div class="form-group">
-								<span class="form-text">성별</span> 
-								<label for="rdo-male">남</label> 
-								<input type="radio" id="rdo-male" name="gender" value="male"> 
-								<label for="rdo-female">여</label> 
-								<input type="radio" id="rdo-female" name="gender" value="female">
+								<span class="form-text">성별</span> <label for="rdo-male">남</label> <input type="radio" id="rdo-male" name="gender" value="male"> <label
+									for="rdo-female">여</label> <input type="radio" id="rdo-female" name="gender" value="female">
 
 							</div>
 
 							<!-- 약관동의 -->
 							<div class="form-group">
-								<span class="form-text">약관동의</span> 
-								<input type="checkbox" id="chk-agree" value="" name="agree" required> 
-								<label for="chk-agree">서비스 약관에 동의합니다.</label>
+								<span class="form-text">약관동의</span> <input type="checkbox" id="chk-agree" value="" name="agree" required> <label for="chk-agree">서비스 약관에
+									동의합니다.</label>
 							</div>
 
 							<!-- 버튼영역 -->

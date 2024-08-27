@@ -13,40 +13,38 @@ public class GuestbookService {
 
 	@Autowired
 	private GuestbookDao dao;
-	
-	public int exeRegister(guestbookVo guestVo) {
-		int count = dao.registerInfo(guestVo);
-		
-		return count;
+
+	public void exeRegister(guestbookVo guestVo) {
+		dao.registerInfo(guestVo);
 	}
-	
+
 	public int exeDeletePerson(int no) {
-		
+
 		int count = dao.deletePerson(no);
-		
+
 		return count;
 	}
-	
+
 	public guestbookVo exegetPersonInfo(int no) {
-		
+
 		guestbookVo guest = dao.getPersonInfo(no);
-		
+
 		return guest;
 	}
-	
+
 	public List<guestbookVo> exegetPersonList(){
-		
+
 		List<guestbookVo> guestList = dao.getPersonList();
-		
+
 		return guestList;
 	}
-	
+
 	public boolean execheckPw(int no, String pw) {
-		
+
 		return dao.checkPw(no, pw);
-		
+
 	}
-	
-	
-	
+
+
+
 }

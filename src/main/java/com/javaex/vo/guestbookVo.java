@@ -7,6 +7,7 @@ public class guestbookVo {
 	private String name;
 	private String password;
 	private String comments;
+	private String time;
 	
 	//Constructor
 	public guestbookVo(int personId, String name, String password, String comments) {
@@ -21,6 +22,23 @@ public class guestbookVo {
 		this.name = name;
 		this.password = password;
 		this.comments = comments;
+
+	}
+	
+	public guestbookVo(int personId, String name, String password, String comments, String time) {
+		this.personId = personId;
+		this.name = name;
+		this.password = password;
+		this.comments = comments;
+		this.time = time;
+	}
+
+	public String getTime() {
+		return time;
+	}
+
+	public void setTime(String time) {
+		this.time = time;
 	}
 
 	public int getPersonId() {
@@ -58,8 +76,10 @@ public class guestbookVo {
 	@Override
 	public String toString() {
 		return "guestbookVo [personId=" + personId + ", name=" + name + ", password=" + password + ", comments="
-				+ comments + "]";
+				+ comments + ", time=" + time + "]";
 	}
+
+
 	
 	
 	
