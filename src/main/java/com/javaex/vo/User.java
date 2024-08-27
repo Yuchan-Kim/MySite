@@ -7,7 +7,7 @@ public class User {
 	private String userName;
 	private String userGender;
 	
-	public User(int userNum, String userId, String userPw, String userName, String userGender) {
+	public User(int userNum, String userId,String userName, String userPw,  String userGender) {
 		this.userNum = userNum;
 		this.userId = userId;
 		this.userPw = userPw;
@@ -15,7 +15,7 @@ public class User {
 		this.userGender = userGender;
 	}
 	
-	public User(String userId, String userPw, String userName, String userGender) {
+	public User(String userId,String userName, String userPw,  String userGender) {
 		this.userId = userId;
 		this.userPw = userPw;
 		this.userName = userName;

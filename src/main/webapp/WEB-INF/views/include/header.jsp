@@ -18,7 +18,7 @@
 				<ul>
 					<li> ${authUser.userName} 님 안녕하세요^^</li>
 					<li><a href="/mysite/user/logout" class="btn_s">로그아웃</a></li>
-					<li><a href="" class="btn_s">회원정보수정</a></li>
+					<li><a href="/mysite/user/edituser" class="btn_s">회원정보수정</a></li>
 				</ul>
 			</c:if>
 			

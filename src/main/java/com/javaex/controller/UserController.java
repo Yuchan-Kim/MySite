@@ -77,6 +77,29 @@ public class UserController {
 		return "redirect:/index";
 	}
 	
+
+	
+	@RequestMapping(value ="/user/edituser", method = {RequestMethod.GET, RequestMethod.POST} )
+	public String edit(HttpSession session) {
+		System.out.println("MySiteUserController.editform()");
+		
+		return "user/editForm";
+	}
+	
+	@RequestMapping(value ="/user/update", method = {RequestMethod.GET, RequestMethod.POST} )
+	public String update(@RequestParam(value = "id") String id, 
+			   			 @RequestParam(value = "pw") String pw,
+			   			 @RequestParam(value = "name") String name,
+			   			 @RequestParam(value = "gender") String gender,
+			   			 HttpSession session) {
+		System.out.println("MySiteUserController.editform()");
+		User authUser = (User) session.getAttribute("authUser");
+		int userNum = authUser.getUserNum();
+		User user = service.exeUpdate(userNum,id,name,pw,gender);
+		session.setAttribute("authUser",user);
+		return "redirect:/index";
+	}
+	
 	
 
 }

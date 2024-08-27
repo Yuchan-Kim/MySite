@@ -13,5 +13,12 @@
 		<![CDATA[ select web_id, web_name, web_pw, web_gender from web where web_id = #{userId} and web_pw = #{userPw} ]]>
 	</select>
 	
+	<update id="updateUser" parameterType="map">
+        <![CDATA[
+        UPDATE web 
+        SET web_id = #{id}, web_name = #{name}, web_pw = #{pw}, web_gender = #{gender}
+        WHERE web_no = #{userNum}
+        ]]>
+    </update>
 	
 </mapper>

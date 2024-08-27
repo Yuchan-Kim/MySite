@@ -24,5 +24,11 @@ public class UserService {
 		User userVo = dao.selectUser(user);
 		return userVo;
 	}
+	
+	public User exeUpdate (int userNum, String id, String name, String pw, String gender) {
+		System.out.println("UserService.exeUpdate()");
+		User user = dao.updateUser(userNum,id,name,pw,gender);
+		return user;
+	}
 
 }
