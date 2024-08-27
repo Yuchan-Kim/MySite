@@ -24,8 +24,8 @@
 			
 			<c:if test = "${sessionScope.authUser == null}">
 			<ul>
-				<li><a href="/mysite/loginform" class="btn_s">로그인</a></li>
-				<li><a href="/mysite/joinprocess" class="btn_s">회원가입</a></li>
+				<li><a href="/mysite/user/loginform" class="btn_s">로그인</a></li>
+				<li><a href="/mysite/user/joinprocess" class="btn_s">회원가입</a></li>
 			</ul>
 			</c:if>
 			

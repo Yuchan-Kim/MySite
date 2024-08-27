@@ -24,7 +24,7 @@ public class UserController {
 	
 
 	//[Methods]
-	@RequestMapping(value ="/joinprocess", method = {RequestMethod.GET, RequestMethod.POST} )
+	@RequestMapping(value ="/user/joinprocess", method = {RequestMethod.GET, RequestMethod.POST} )
 	public String joinProcess() {
 
 		System.out.println("MySiteUserController.joinprocess()");
@@ -32,7 +32,7 @@ public class UserController {
 		return "user/joinForm";
 	}
 	
-	@RequestMapping(value ="/registration", method = {RequestMethod.GET, RequestMethod.POST} )
+	@RequestMapping(value ="/user/registration", method = {RequestMethod.GET, RequestMethod.POST} )
 	public String registration(@RequestParam(value = "id") String id, 
 							   @RequestParam(value = "pw") String pw,
 							   @RequestParam(value = "name") String name,
@@ -48,7 +48,7 @@ public class UserController {
 		return "user/joinSuccess";
 	}
 	
-	@RequestMapping(value ="/loginform", method = {RequestMethod.GET, RequestMethod.POST} )
+	@RequestMapping(value ="/user/loginform", method = {RequestMethod.GET, RequestMethod.POST} )
 	public String loginform() {
 		
 		System.out.println("MySiteUserController.loginform()");
