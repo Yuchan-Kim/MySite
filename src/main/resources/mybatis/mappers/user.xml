@@ -14,11 +14,19 @@
 	</select>
 	
 	<update id="updateUser" parameterType="map">
-        <![CDATA[
-        UPDATE web 
-        SET web_id = #{id}, web_name = #{name}, web_pw = #{pw}, web_gender = #{gender}
-        WHERE web_no = #{userNum}
-        ]]>
-    </update>
+    	<![CDATA[
+   		UPDATE web 
+    	SET web_id = #{id}, web_name = #{name}, web_pw = #{pw}, web_gender = #{gender}
+    	WHERE web_no = #{userNum}
+    	]]>
+	</update>
+	
+	
+    <select id="existsById" parameterType="String" resultType="Integer">
+        <![CDATA[ SELECT COUNT(*)
+        FROM web
+        WHERE web_no = #{id} ]]>
+    </select>
+
 	
 </mapper>

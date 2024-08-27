@@ -2,7 +2,7 @@ package com.javaex.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -36,24 +36,38 @@ public class UserController {
 	public String registration(@RequestParam(value = "id") String id, 
 							   @RequestParam(value = "pw") String pw,
 							   @RequestParam(value = "name") String name,
-							   @RequestParam(value = "gender") String gender) {
+							   @RequestParam(value = "gender") String gender,@RequestParam(value = "agree", required = true) String agree, Model model) {
 		
 		System.out.println("MySiteUserController.Registration()");
-		User user = new User(id,pw,name,gender);
+		
+			User user = new User(id,pw,name,gender);
+			service.exeRegister(user);
+			return "user/joinSuccess";
 		
 		
-		int count = service.exeRegister(user);
-		System.out.println(count + "건 등록되었습니다.");
 		
-		return "user/joinSuccess";
 	}
+	@RequestMapping(value ="/user/checkDuplicate", method = {RequestMethod.GET, RequestMethod.POST} )
+	public String checkDuplicate(@RequestParam("id") String id, Model model) {
+        boolean isDuplicate = service.isDuplicateUserId(id);
+        
+        if (!isDuplicate) {
+            model.addAttribute("duplicateMessage", "이미 존재하는 아이디입니다.");
+        } else {
+            model.addAttribute("duplicateMessage", "사용 가능한 아이디입니다.");
+        }
+        model.addAttribute("id", id);
+        return "user/joinForm";  // 회원가입 JSP 페이지로 다시 포워딩
+    }
+	
+	
+	
+	
 	
 	@RequestMapping(value ="/user/loginform", method = {RequestMethod.GET, RequestMethod.POST} )
 	public String loginform() {
 		
 		System.out.println("MySiteUserController.loginform()");
-		
-		
 		return "user/loginForm";
 	}
 	
@@ -65,7 +79,6 @@ public class UserController {
 		User authUser = service.exeLogin(user);
 		
 		session.setAttribute("authUser",authUser);
-		
 		return "redirect:/index";
 	}
 	
@@ -99,6 +112,7 @@ public class UserController {
 		session.setAttribute("authUser",user);
 		return "redirect:/index";
 	}
+	
 	
 	
 

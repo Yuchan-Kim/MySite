@@ -27,11 +27,11 @@ public class UserDao {
 		return userVo;
 	}
 
-	public User updateUser(@Param("userNum") int userNum,
-			@Param("id") String id,
-			@Param("name") String name,
-			@Param("pw") String pw,
-			@Param("gender") String gender) {
+	public User updateUser(int userNum,
+			 String id,
+			 String name,
+			 String pw,
+			 String gender) {
 		System.out.println("UserDao.updateUser()");
 		Map<String, Object> params = new HashMap<>();
 		params.put("userNum", userNum);
@@ -44,4 +44,15 @@ public class UserDao {
 		User user = new User(userNum,id,name,pw,gender);
 		return user;
 	}
+	
+	// 아이디 중복 여부 확인
+    public boolean existsById(String id) {
+        Integer count = sqlsession.selectOne("mysite.existsById", id);
+        if (count >0) {
+        	return false;
+        }else {
+        	return true;
+        }
+        
+    }
 }

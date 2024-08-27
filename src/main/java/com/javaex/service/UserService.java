@@ -30,5 +30,10 @@ public class UserService {
 		User user = dao.updateUser(userNum,id,name,pw,gender);
 		return user;
 	}
+	
+	// 아이디 중복 체크 서비스 메서드
+    public boolean isDuplicateUserId(String id) {
+        return dao.existsById(id);
+    }
 
 }
