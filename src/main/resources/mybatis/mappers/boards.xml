@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="boards">
+	
+	
+	<insert id = "insert" parameterType = "map" >
+		<![CDATA[ insert into boards
+		values(null, #{title}, #{contents}, 0 , now(), #{personId}) ]]>
+	</insert>
+	
+	<select id = "selectList" resultType = "com.javaex.vo.BoardVo">
+		<![CDATA[ SELECT 
+    	b.board_id, b.title, b.contents, b.views, b.writeTime, u.web_no, u.web_name 
+		FROM 
+    		boards b 
+		LEFT JOIN 
+   		web u ON b.web_no = u.web_no]]>
+	</select>
+	
+	<select id= "selectOne" parameterType="int" resultType = "com.javaex.vo.BoardVo">
+		<![CDATA[ SELECT 
+    	* 
+		FROM 
+    		boards  where board_id = #{boardId}
+		]]>
+	</select>
+	
+	<update id="viewUpdate" parameterType="int">
+		<![CDATA[ update 
+		boards set views = views + 1 where board_id =  #{boardId}
+		]]>
+	</update>
+	
+	<delete id="delete" parameterType = "map">
+		<![CDATA[ delete from boards where web_no = #{personId} and board_id = #{boardId}]]>
+	</delete>
+	
+	
+	
+	
+</mapper>

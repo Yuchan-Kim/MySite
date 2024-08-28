@@ -6,8 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="assets/css/mysite.css" rel="stylesheet" type="text/css">
-<link href="assets/css/board.css" rel="stylesheet" type="text/css">
+<link href="http://localhost:8888/mysite/assets/css/mysite.css" rel="stylesheet" type="text/css">
+<link href="http://localhost:8888/mysite/assets/css/board.css" rel="stylesheet" type="text/css">
 
 </head>
 
@@ -17,21 +17,13 @@
 
 		<c:import url = "/WEB-INF/views/include/header.jsp"></c:import>
 		
-		<div id="nav">
-			<ul class="clearfix">
-				<li><a href="">입사지원서</a></li>
-				<li><a href="">게시판</a></li>
-				<li><a href="">갤러리</a></li>
-				<li><a href="">방명록</a></li>
-			</ul>
-		</div>
-		<!-- //nav -->
+		
 
 		<div id="container" class="clearfix">
 			<div id="aside">
 				<h2>게시판</h2>
 				<ul>
-					<li><a href="">일반게시판</a></li>
+					<li><a href="/mysite/board/list">일반게시판</a></li>
 					<li><a href="">댓글게시판</a></li>
 				</ul>
 			</div>
@@ -60,6 +52,7 @@
 								<button type="submit" id=btn_search>검색</button>
 							</div>
 						</form>
+						
 						<table >
 							<thead>
 								<tr>
@@ -71,49 +64,21 @@
 									<th>관리</th>
 								</tr>
 							</thead>
+							<c:forEach items = "${requestScope.boardList}" var = "boardList">
 							<tbody>
 								<tr>
-									<td>123</td>
-									<td class="text-left"><a href="#">게시판 게시글입니다.</a></td>
-									<td>정우성</td>
-									<td>1232</td>
-									<td>2020-12-23</td>
-									<td><a href="">[삭제]</a></td>
+									<td >${boardList.boardId}</td>
+									<td class="text-left"><a href="/mysite/board/read?boardId=${boardList.boardId}">${boardList.title}</a></td>
+									<td>${boardList.name}</td>
+									<td>${boardList.views}</td>
+									<td>${boardList.writeTime}</td>
+									<td><a href="/mysite/board/delete?title=${boardList.boardId}">[삭제]</a></td>
 								</tr>
-								<tr>
-									<td>123</td>
-									<td class="text-left"><a href="#">게시판 게시글입니다.</a></td>
-									<td>정우성</td>
-									<td>1232</td>
-									<td>2020-12-23</td>
-									<td><a href="">[삭제]</a></td>
-								</tr>
-								<tr>
-									<td>123</td>
-									<td class="text-left"><a href="#">게시판 게시글입니다.</a></td>
-									<td>정우성</td>
-									<td>1232</td>
-									<td>2020-12-23</td>
-									<td><a href="">[삭제]</a></td>
-								</tr>
-								<tr>
-									<td>123</td>
-									<td class="text-left"><a href="#">게시판 게시글입니다.</a></td>
-									<td>정우성</td>
-									<td>1232</td>
-									<td>2020-12-23</td>
-									<td><a href="">[삭제]</a></td>
-								</tr>
-								<tr class="last">
-									<td>123</td>
-									<td class="text-left"><a href="#">게시판 게시글입니다.</a></td>
-									<td>정우성</td>
-									<td>1232</td>
-									<td>2020-12-23</td>
-									<td><a href="">[삭제]</a></td>
-								</tr>
+								
 							</tbody>
+							</c:forEach>
 						</table>
+						
 			
 						<div id="paging">
 							<ul>
@@ -134,7 +99,7 @@
 							
 							<div class="clear"></div>
 						</div>
-						<a id="btn_write" href="">글쓰기</a>
+						<a id="btn_write" href="/mysite/board/writeform">글쓰기</a>
 					
 					</div>
 					<!-- //list -->

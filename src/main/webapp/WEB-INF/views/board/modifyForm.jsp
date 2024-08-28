@@ -6,8 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="assets/css/mysite.css" rel="stylesheet" type="text/css">
-<link href="assets/css/board.css" rel="stylesheet" type="text/css">
+<link href="http://localhost:8888/mysite/assets/css/mysite.css" rel="stylesheet" type="text/css">
+<link href="http://localhost:8888/mysite/assets/css/board.css" rel="stylesheet" type="text/css">
 
 </head>
 
@@ -17,21 +17,13 @@
 
 		<c:import url = "/WEB-INF/views/include/header.jsp"></c:import>
 
-		<div id="nav">
-			<ul class="clearfix">
-				<li><a href="">입사지원서</a></li>
-				<li><a href="">게시판</a></li>
-				<li><a href="">갤러리</a></li>
-				<li><a href="">방명록</a></li>
-			</ul>
-		</div>
-		<!-- //nav -->
+		
 
 		<div id="container" class="clearfix">
 			<div id="aside">
 				<h2>게시판</h2>
 				<ul>
-					<li><a href="">일반게시판</a></li>
+					<li><a href="mysite/board/list">일반게시판</a></li>
 					<li><a href="">댓글게시판</a></li>
 				</ul>
 			</div>
@@ -58,42 +50,35 @@
 							<!-- 작성자 -->
 							<div class="form-group">
 								<span class="form-text">작성자</span>
-								<span class="form-value">정우성</span>
+								<span class="form-value">${board.name }</span>
 							</div>
 							
 							<!-- 조회수 -->
 							<div class="form-group">
 								<span class="form-text">조회수</span>
-								<span class="form-value">123</span>
+								<span class="form-value">${board.views }</span>
 							</div>
 							
 							<!-- 작성일 -->
 							<div class="form-group">
 								<span class="form-text">작성일</span>
-								<span class="form-value">2020-03-02</span>
+								<span class="form-value">${board.writeTime }</span>
 							</div>
 							
 							<!-- 제목 -->
 							<div class="form-group">
 								<label class="form-text" for="txt-title">제목</label>
-								<input type="text" id="txt-title" name="" value="여기에는 글제목이 출력됩니다.">
+								<input type="text" id="txt-title" name="" value="${board.title }">
 							</div>
 						
 							
 						
 							<!-- 내용 -->
 							<div class="form-group">
-								<textarea id="txt-content">여기에는 본문내용이 출력됩니다.
-	여기에는 본문내용이 출력됩니다.
-	여기에는 본문내용이 출력됩니다.
-	여기에는 본문내용이 출력됩니다.
-	여기에는 본문내용이 출력됩니다.
-	여기에는 본문내용이 출력됩니다.
-	여기에는 본문내용이 출력됩니다.
-	여기에는 본문내용이 출력됩니다.</textarea>
+								<textarea id="txt-content">${board.contents }</textarea>
 							</div>
 							
-							<a id="btn_cancel" href="">취소</a>
+							<a id="btn_cancel" href="/mysite/board/list">취소</a>
 							<button id="btn_modify" type="submit" >수정</button>
 							
 						</form>

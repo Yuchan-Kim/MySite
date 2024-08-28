@@ -5,8 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="assets/css/mysite.css" rel="stylesheet" type="text/css">
-<link href="assets/css/board.css" rel="stylesheet" type="text/css">
+<link href="http://localhost:8888/mysite/assets/css/mysite.css" rel="stylesheet" type="text/css">
+<link href="http://localhost:8888/mysite/assets/css/board.css" rel="stylesheet" type="text/css">
 
 </head>
 
@@ -20,7 +20,7 @@
 			<div id="aside">
 				<h2>게시판</h2>
 				<ul>
-					<li><a href="">일반게시판</a></li>
+					<li><a href="mysite/board/list">일반게시판</a></li>
 					<li><a href="">댓글게시판</a></li>
 				</ul>
 			</div>
@@ -46,32 +46,31 @@
 						<form action="#" method="get">
 							<!-- 작성자 -->
 							<div class="form-group">
-								<span class="form-text">작성자</span> <span class="form-value">정우성</span>
+								<span class="form-text">작성자</span> <span class="form-value">${board.name}</span>
 							</div>
 
 							<!-- 조회수 -->
 							<div class="form-group">
-								<span class="form-text">조회수</span> <span class="form-value">123</span>
+								<span class="form-text">조회수</span> <span class="form-value">${board.views}</span>
 							</div>
 
 							<!-- 작성일 -->
 							<div class="form-group">
-								<span class="form-text">작성일</span> <span class="form-value">2020-03-02</span>
+								<span class="form-text">작성일</span> <span class="form-value">${board.writeTime}</span>
 							</div>
 
 							<!-- 제목 -->
 							<div class="form-group">
-								<span class="form-text">제 목</span> <span class="form-value">여기에는 글제목이 출력됩니다.</span>
+								<span class="form-text">제 목</span> <span class="form-value">${board.title}</span>
 							</div>
 
 							<!-- 내용 -->
 							<div id="txt-content">
-								<span class="form-value"> 여기에는 본문내용이 출력됩니다.<br> 여기에는 본문내용이 출력됩니다.<br> 여기에는 본문내용이 출력됩니다.<br> 여기에는 본문내용이 출력됩니다.<br> 여기에는 본문내용이
-									출력됩니다.<br> 여기에는 본문내용이 출력됩니다.<br> 여기에는 본문내용이 출력됩니다.<br> 여기에는 본문내용이 출력됩니다.<br>
+								<span class="form-value"> ${board.contents}
 								</span>
 							</div>
 
-							<a id="btn_modify" href="">수정</a> <a id="btn_modify" href="">목록</a>
+							<a id="btn_modify" href="/mysite/board/modifyform?id=${board.baordId}">수정</a> <a id="btn_modify" href="/mysite/board/list">목록</a>
 
 						</form>
 						<!-- //form -->
