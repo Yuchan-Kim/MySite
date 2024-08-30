@@ -46,37 +46,39 @@
 	
 				<div id="board">
 					<div id="modifyForm">
-						<form action="#" method="get">
+						<form action="/mysite/board/modify" method="get">
 							<!-- 작성자 -->
 							<div class="form-group">
 								<span class="form-text">작성자</span>
-								<span class="form-value">${board.name }</span>
+								<span class="form-value">${board.name}</span>
 							</div>
 							
 							<!-- 조회수 -->
 							<div class="form-group">
 								<span class="form-text">조회수</span>
-								<span class="form-value">${board.views }</span>
+								<span class="form-value">${board.views}</span>
 							</div>
 							
 							<!-- 작성일 -->
 							<div class="form-group">
 								<span class="form-text">작성일</span>
-								<span class="form-value">${board.writeTime }</span>
+								<span class="form-value">${board.writeTime}</span>
 							</div>
 							
 							<!-- 제목 -->
 							<div class="form-group">
 								<label class="form-text" for="txt-title">제목</label>
-								<input type="text" id="txt-title" name="" value="${board.title }">
+								<input type="text" id="txt-title" name="title" value="${board.title}">
 							</div>
 						
 							
 						
 							<!-- 내용 -->
 							<div class="form-group">
-								<textarea id="txt-content">${board.contents }</textarea>
+								<textarea id="txt-content" name = "contents">${board.contents}</textarea>
 							</div>
+							
+							<input type="hidden" name = "boardId" value = "${board.boardId}">
 							
 							<a id="btn_cancel" href="/mysite/board/list">취소</a>
 							<button id="btn_modify" type="submit" >수정</button>

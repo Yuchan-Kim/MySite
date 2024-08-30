@@ -70,7 +70,7 @@
 								</span>
 							</div>
 
-							<a id="btn_modify" href="/mysite/board/modifyform?id=${board.baordId}">수정</a> <a id="btn_modify" href="/mysite/board/list">목록</a>
+							<a id="btn_modify" href="/mysite/board/modifyform?id=${board.boardId}">수정</a> <a id="btn_modify" href="/mysite/board/list">목록</a>
 
 						</form>
 						<!-- //form -->

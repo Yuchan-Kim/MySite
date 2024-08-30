@@ -31,8 +31,9 @@ public class BoardDao {
 	}
 	
 	public BoardVo getBoard(int boardId) {
-		BoardVo board = sqlsession.selectOne("boards.selectOne",boardId);
 		sqlsession.update("boards.viewUpdate",boardId);
+		BoardVo board = sqlsession.selectOne("boards.selectboard",boardId);
+		
 		return board;
 	}
 	
@@ -47,7 +48,15 @@ public class BoardDao {
 		Map<String,Object> params = new HashMap<>();
 		params.put("personId", personId);
 		params.put("boardId", boardId);
-		BoardVo board = sqlsession.selectOne("boards.selectOne",params);
+		BoardVo board = sqlsession.selectOne("boards.modifiySelect",params);
 		return board;
+	}
+	
+	public void changeBoard(int boardId, String title, String contents) {
+		Map<String,Object> params = new HashMap<>();
+		params.put("boardId", boardId);
+		params.put("title", title);
+		params.put("contents", contents);
+		sqlsession.update("boards.updateBoard",params);
 	}
 }

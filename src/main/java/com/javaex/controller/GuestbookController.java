@@ -15,8 +15,7 @@ import com.javaex.vo.guestbookVo;
 @Controller
 public class GuestbookController {
 	//Fields
-	@Autowired
-	private GuestbookDao dao;
+	
 
 	@Autowired
 	private GuestbookService service;
@@ -70,6 +69,15 @@ public class GuestbookController {
 
 		return "redirect:/guestbook/addlist";
 
+	}
+	
+	//ajaxIndex
+	@RequestMapping(value = "guestbook/ajaxIndex",method = {RequestMethod.GET, RequestMethod.POST})
+	public String ajaxIndex() {
+		System.out.println("GuestbookController.ajaxIndex()");
+		
+		return "/guestbook/ajaxIndex";
+		
 	}
 
 

@@ -20,7 +20,7 @@
    		web u ON b.web_no = u.web_no]]>
 	</select>
 	
-	<select id= "selectOne" parameterType="int" resultType = "com.javaex.vo.BoardVo">
+	<select id= "selectboard" parameterType="int" resultType = "com.javaex.vo.BoardVo">
 		<![CDATA[ SELECT 
     	* 
 		FROM 
@@ -38,6 +38,24 @@
 		<![CDATA[ delete from boards where web_no = #{personId} and board_id = #{boardId}]]>
 	</delete>
 	
+	<select id="modifiySelect" parameterType="map" resultType = "com.javaex.vo.BoardVo">
+		<![CDATA[ SELECT 
+    	b.board_id, b.title, b.contents, b.views, b.writeTime, u.web_no, u.web_name 
+		FROM 
+    		boards b 
+		LEFT JOIN 
+   		web u ON b.web_no = u.web_no and
+   		b.board_id = #{boardId} and u.web_no = #{personId}
+		]]>
+	</select>
+	
+	<update id = "updateBoard" parameterType="map">
+		<![CDATA[ 
+			update boards
+			set title = #{title}, contents = #{contents} where board_id = #{boardId}
+		
+		]]>
+	</update>
 	
 	
 	

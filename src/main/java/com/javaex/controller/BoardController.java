@@ -39,9 +39,29 @@ public class BoardController {
 	        return "redirect:/user/loginform";
 	    }else {
 	    	BoardVo board = service.exeModify(boardId, user.getUserNum());
-	    	model.addAttribute("board",board);
+	    	if(board == null) {
+	    		return "redirect:/board/list";
+	    	}else {
+	    		model.addAttribute("board",board);
+	    		return "board/modifyForm";
+	    	}
+	    	
 	    }
-		return "board/modiftForm";
+		
+		
+	}
+	
+	@RequestMapping(value ="/board/modify", method = {RequestMethod.GET, RequestMethod.POST} )
+	public String modify(HttpSession session,@RequestParam(value = "title") String title,@RequestParam(value = "contents") String contents,
+			@RequestParam(value = "boardId")int boardId) {
+		User user = (User) session.getAttribute("authUser");
+		if (user == null) {
+	        return "redirect:/user/loginform";
+	    }else {
+	    	service.exeChange(boardId, title, contents);
+	    	
+	    }
+		return "redirect:/board/list";
 		
 	}
 	

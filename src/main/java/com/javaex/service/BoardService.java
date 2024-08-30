@@ -34,7 +34,12 @@ public class BoardService {
 	}
 	
 	public BoardVo exeModify(int boardId, int personId) {
+		
 		BoardVo board = dao.getModifyForm(boardId,personId);
 		return board;
+	}
+	
+	public void exeChange(int boardId, String title, String contents) {
+		dao.changeBoard(boardId, title, contents);
 	}
 }
