@@ -71,7 +71,7 @@
 				<!-- //content-head -->
 
 				<div id="file">
-					<form action="${pageContext.request.contextPath}/attach/upload" method="get" enctype="multipart/form-data"> <!-- 첨부파일에는 꼭 붙여줘야 한다.  보안용 -->
+					<form action="${pageContext.request.contextPath}/attach/upload" method="post" enctype="multipart/form-data"> <!-- 첨부파일에는 꼭 붙여줘야 한다.  보안용 -->
 						<table>
 							<colgroup>
 								<col style="width: 600px;">
@@ -81,7 +81,9 @@
 								<td class="text-left">
 								<input type="file" name="file">
 								</td>
-								<td class="text-right"><button type="submit">파일업로드</button></td>
+								<td class="text-right">
+									<button type="submit">파일업로드</button>
+								</td>
 							</tr>
 						</table>
 					</form>

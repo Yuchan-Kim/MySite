@@ -76,7 +76,8 @@
 				<div id="file">
 					
 						<div>
-							<img id="resultImg" src="">
+							<img id="resultImg" src="${pageContext.request.contextPath}/upload/${requestScope.saveName}">
+
 						</div>
 						<p>
 							<a id="btnUpload" href="">다시 업로드 하기</a>
