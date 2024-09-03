@@ -17,7 +17,7 @@ public class UserDao {
 
 	public int registeration(User user) {
 		System.out.println("Registration Process()");
-		int count = sqlsession.insert("mysite.insert", user);
+		int count = sqlsession.insert("user.insert", user);
 		return count;
 	}
 
@@ -25,7 +25,7 @@ public class UserDao {
 		Map<String, Object> params = new HashMap<>();
 		params.put("id", id);
 		params.put("pw", pw);
-		User user = (User)sqlsession.selectOne("mysite.selectOne",params);
+		User user = (User)sqlsession.selectOne("user.selectOne",params);
 		
 
 		return user;
@@ -43,19 +43,30 @@ public class UserDao {
 		params.put("pw", pw);
 		params.put("gender", gender);
 
-		sqlsession.update("mysite.updateUser", params);
+		sqlsession.update("user.updateUser", params);
 		User user = new User(userNum,id,name,pw,gender);
 		return user;
 	}
 	
 	// 아이디 중복 여부 확인
     public boolean existsById(String id) {
-        Integer count = sqlsession.selectOne("mysite.existsById", id);
+        Integer count = sqlsession.selectOne("user.existsById", id);
         if (count >0) {
         	return false;
         }else {
         	return true;
         }
         
+    }
+    
+    //아이디 중복 체크 2
+    public int selectUserById(String id) {
+    	System.out.println("UserDao.selectUserById()");
+    	System.out.println(id);
+    	
+    	int count = sqlsession.selectOne("user.selectById",id);
+    	System.out.println(count);
+    	return count;
+    	
     }
 }

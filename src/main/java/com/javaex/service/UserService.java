@@ -35,5 +35,18 @@ public class UserService {
     public boolean isDuplicateUserId(String id) {
         return dao.existsById(id);
     }
+    
+    // 아이디 중복체크 2 axios, javascript 사용
+    public boolean exeIdCheck(String id) {
+    	System.out.println("UserSevice.exeIdCheck()");
+    	System.out.println(id);
+    	
+    	int count = dao.selectUserById(id);
+    	if (count ==1) {
+    		return false;
+    	}
+    	
+    	return true;
+    }
 
 }

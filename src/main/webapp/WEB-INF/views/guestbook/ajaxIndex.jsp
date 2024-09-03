@@ -73,26 +73,11 @@
 						
 					</form>	
 					
-					<c:forEach items = "${requestScope.guestList}" var = "guestVo">
-					<table class="guestRead">
-						<colgroup>
-							<col style="width: 10%;">
-							<col style="width: 40%;">
-							<col style="width: 40%;">
-							<col style="width: 10%;">
-						</colgroup>
-						<tr>
-							<td>아이디: ${guestVo.personId}</td>
-							<td>이름: ${guestVo.name} </td>
-							<td>날짜: ${guestVo.time }</td>
-							<td><a href="/mysite/guestbook/deleteformat?num=${guestVo.personId}">[삭제]</a></td>
-						</tr>
-						<tr>
-							<td colspan=4 class="text-left">${guestVo.comments}</td>
-						</tr>
-					</table>
-					<!-- //guestRead -->
-					</c:forEach>
+					<!-- 리스트자리 -->
+					<div id="guestbookListArea">
+						<!-- afterbegin(시작후)  -->
+					</div>
+					<!-- 리스트자리 -->
 					
 					
 				</div>
@@ -122,14 +107,19 @@
     
         		 	responseType: 'json' //수신타입
     			 }).then(function (response) {
-        			console.log(response); //수신데이타
-        			for(let i = 0; i<response.data.length; i++){
-        				console.log(response.data[i].name);
+        			console.log(response.data); //수신데이타
+        			//태그 가져오기
+        			
+        			
+        			
+        			for(let i=0; i<response.data.length; i++){
+        				//console.log(response.data[i].name);
+        				let guestVo = response.data[i];
+        				render(guestVo);
         			}
         			
-        			//태그 가져오기
-        			let listArea = document.querySelector('#guestbookListArea');
-        			console.log(listArea);
+        			
+        			
     
     			 }).catch(function (error) {
         		    console.log(error);
@@ -137,6 +127,37 @@
     		  });
 			
 		});
+		
+		function render(guestVo){
+			let listArea = document.querySelector('#guestbookListArea');
+			let str = "";
+				str += '	<table class="guestRead">	';
+				str += '		<colgroup>	'
+				str += '			<col style="width: 10%;">	';
+				str += '			<col style="width: 40%;">';
+				str += '			<col style="width: 40%;">';
+				str += '			<col style="width: 10%;">';
+				str += '		</colgroup>';
+				str += '		<tr>';
+				str += '			<td>'+guestVo.personId+'</td>';
+				str += '			<td>'+guestVo.name+'</td>';
+				str += '			<td>'+guestVo.time+'</td>';
+				str += '			<td><a href="">[삭제]</a></td>';
+				str += '		</tr>';
+				str += '		<tr>';
+				str += '			<td colspan=4 class="text-left">'+guestVo.comments+'</td>';
+				str += '	</tr>';
+				str += '	</table>';
+				
+				
+				listArea.insertAdjacentHTML('afterbegin', str);
+				
+		
+				
+				
+				
+				
+		}
 	</script>
 
 </body>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="mysite">
+<mapper namespace="user">
     <insert id="insert" parameterType="com.javaex.vo.User">
         <![CDATA[
         INSERT INTO web 
@@ -22,10 +22,17 @@
 	</update>
 	
 	
-    <select id="existsById" parameterType="String" resultType="Integer">
+    <select id="existsById" parameterType="String" resultType="int">
         <![CDATA[ SELECT COUNT(*)
         FROM web
         WHERE web_no = #{id} ]]>
+    </select>
+    
+    <select id="selectById" parameterType="String" resultType="int">
+    	<![CDATA[ 
+    		select count(*) from web 
+    		where web_id = #{id}
+    	]]>
     </select>
 
 	

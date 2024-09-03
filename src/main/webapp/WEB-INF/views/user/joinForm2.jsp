@@ -8,8 +8,7 @@
 <title>Insert title here</title>
 <link href="http://localhost:8888/mysite/assets/css/mysite.css" rel="stylesheet" type="text/css">
 <link href="http://localhost:8888/mysite/assets/css/user.css" rel="stylesheet" type="text/css">
-<!-- Axios 라이브러리 포함 -->
-<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
 </head>
 
 <body>
@@ -48,14 +47,27 @@
 						<form action="/mysite/user/registration" method="post">
 
 							<!-- 아이디 -->
-							<div class="form-group">
-								<label class="form-text" for="input-uid">아이디</label> 
-								<input type="text" id="input-uid" name="id" value="${param.id}" placeholder="아이디를 입력하세요">
-								<button type="submit" id="btnCheck">중복체크</button><br>
-								<span id="message" class="message"></span>
-								
-							</div>
 
+
+
+							<c:choose>
+								<c:when test="${not empty duplicateMessage}">
+									<div class="form-group">
+										<span style="color: red;">${duplicateMessage}</span>
+									</div>
+									<div class="form-group">
+										<label class="form-text" for="input-uid">아이디</label> <input type="text" id="input-uid" name="id" value="${param.id}" placeholder="아이디를 입력하세요">
+										<button type="submit" formaction="/mysite/user/checkDuplicate" formmethod="post">중복체크</button>
+									</div>
+								</c:when>
+								<c:otherwise>
+									<div class="form-group">
+										<label class="form-text" for="input-uid">아이디</label> <input type="text" id="input-uid" name="id" value="" placeholder="아이디를 입력하세요">
+										<button type="submit" formaction="/mysite/user/checkDuplicate" formmethod="post">중복체크</button>
+									</div>
+									
+								</c:otherwise>
+							</c:choose>
 
 
 							<!-- 비밀번호 -->
@@ -101,64 +113,13 @@
 
 	</div>
 	<!-- //wrap -->
-	<script>
-		document.addEventListener('DOMContentLoaded', function(){
-			let btnCheck = document.querySelector('#btnCheck');
-			
-			btnCheck.addEventListener('click', function(){
-				console.log('클릭');
-				
-				//데이터 수집
-				let idTag = document.querySelector('#input-uid');
-				console.log(idTag);
-				
-				let id = idTag.value;
-				let user = {
-						id:id
-				};
-				
-				 axios({
-					 
-					 	method: 'get',           // put, post, delete                   
-	        		 	url: '${pageContext.request.contextPath}/api/user/idcheck',
-	        		 	headers: {"Content-Type" : "application/json; charset=utf-8"}, //전송타입
-	       			 	params: {id:id},  //get방식 파라미터로 값이 전달
-	         		 	//data: guestbookVo,   //put, post, delete 방식 자동으로 JSON으로 변환 전달
-	        		 	responseType: 'json' //수신타입
-	        		 	
-	    			 }).then(function (response) {
-	        			console.log(response.data); //수신데이터
-	        			
-	        			//Draw
-	        			let msgTag = document.querySelector('#message');
-	        			let can = response.data;
-	        			if (can == true){
-	        				msgTag.textContent = "사용 할 수 있는 아이디 입니다.";
-	        				msgTag.style.color = "#0000ff";
-	        			}else{
-	        				msgTag.textContent = "사용 할 수 없는 아이디 입니다.";
-	        				msgTag.style.color = "#0000ff";
-	        			}
-	        			
-	        			
-	        			
-	    			 }).catch(function (error) {
-	        		    console.log(error);
-	        		    
-	        		    
-	        		    
-	    
-	    		  });
-				
-				
-				
-				
-			});
-		});
-	</script>
 
 </body>
 
-
+<script>
+	document.addEventListener("DOMContentLoaded" function(){
+		
+	});
+</script>
 
 </html>

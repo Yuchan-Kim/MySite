@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.javaex.dao.UserDao;
 import com.javaex.service.UserService;
@@ -110,6 +111,18 @@ public class UserController {
 		User user = service.exeUpdate(userNum,id,name,pw,gender);
 		session.setAttribute("authUser",user);
 		return "redirect:/index";
+	}
+	
+	//아이디 중복 체크 
+	@ResponseBody
+	@RequestMapping(value ="/api/user/idcheck", method = {RequestMethod.GET, RequestMethod.POST} )
+	public boolean idCheck(@RequestParam(value = "id") String id) {
+		System.out.println("UserController.idCheck");
+		System.out.println(id);
+		
+		boolean idCheck =service.exeIdCheck(id);
+		System.out.println(idCheck);
+		return idCheck;
 	}
 
 
