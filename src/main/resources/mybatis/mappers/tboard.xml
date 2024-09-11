@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="tboard">
+	<select id="selectList" resultType="com.javaex.vo.TboardVo">
+		<![CDATA[ 
+    		SELECT  b.no,
+        			b.title,
+        			b.content,
+        			u.user_name,
+        			b.hit,
+        			date_format(b.reg_date,'%Y-%m-%d %H:%i:%s') regDate,
+        			u.user_no userNo
+			FROM tboard b, user u
+			WHERE  b.user_no = u.user_no order by b.no desc
+    	]]>
+	</select>
+	
+	<select id="selectList2" parameterType = "map" resultType="com.javaex.vo.TboardVo">
+		<![CDATA[ 
+    		SELECT  b.no,
+        			b.title,
+        			b.content,
+        			u.user_name,
+        			b.hit,
+        			date_format(b.reg_date,'%Y-%m-%d %H:%i:%s') regDate,
+        			u.user_no userNo
+			FROM tboard b, user u
+			WHERE  b.user_no = u.user_no order by b.no asc
+			limit #{startRowNum} ,#{listCnt}
+    	]]>
+	</select>
+	
+	<select id="selectList3" parameterType = "map" resultType="com.javaex.vo.TboardVo">
+		<![CDATA[ 
+    		SELECT  b.no,
+        			b.title,
+        			b.content,
+        			u.user_name,
+        			b.hit,
+        			date_format(b.reg_date,'%Y-%m-%d %H:%i:%s') regDate,
+        			u.user_no userNo
+			FROM tboard b, user u
+			WHERE  b.user_no = u.user_no and b.title like concat('%',#{keyword}, '%')
+			order by b.no asc
+			limit #{startRowNum} ,#{listCnt}
+    	]]>
+	</select>
+	
+	<select id = "selecttotalCnt" resultType = "int">
+		<![CDATA[ 
+			SELECT count(*)
+			from tboard
+		]]>
+	</select>
+
+</mapper>
