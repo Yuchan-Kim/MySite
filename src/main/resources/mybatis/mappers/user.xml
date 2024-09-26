@@ -4,34 +4,34 @@
 <mapper namespace="user">
     <insert id="insert" parameterType="com.javaex.vo.User">
         <![CDATA[
-        INSERT INTO web 
+        INSERT INTO user 
         VALUES (NULL, #{userId}, #{userName}, #{userPw}, #{userGender})
         ]]>
     </insert>
     
     <select id="selectOne" parameterType="map" resultType="com.javaex.vo.User">
-		<![CDATA[ select web_no,web_id, web_name, web_pw, web_gender from web where web_id = #{id} and web_pw = #{pw} ]]>
+		<![CDATA[ select user_no,user_id,user_name, user_pw, user_gender from user where user_id = #{id} and user_pw = #{pw} ]]>
 	</select>
 	
 	<update id="updateUser" parameterType="map">
     	<![CDATA[
-   		UPDATE web 
-    	SET web_id = #{id}, web_name = #{name}, web_pw = #{pw}, web_gender = #{gender}
-    	WHERE web_no = #{userNum}
+   		UPDATE user 
+    	SET user_id = #{id}, user_name = #{name}, user_pw = #{pw}, user_gender = #{gender}
+    	WHERE user_no = #{userNum}
     	]]>
 	</update>
 	
 	
     <select id="existsById" parameterType="String" resultType="int">
         <![CDATA[ SELECT COUNT(*)
-        FROM web
-        WHERE web_no = #{id} ]]>
+        FROM user
+        WHERE user_no = #{id} ]]>
     </select>
     
     <select id="selectById" parameterType="String" resultType="int">
     	<![CDATA[ 
-    		select count(*) from web 
-    		where web_id = #{id}
+    		select count(*) from user 
+    		where user_id = #{id}
     	]]>
     </select>
 
